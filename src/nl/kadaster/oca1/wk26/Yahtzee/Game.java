@@ -1,4 +1,4 @@
-package week26_Yahtzee;
+package nl.kadaster.oca1.wk26.Yahtzee;
 
 import java.util.Scanner;
 
@@ -6,17 +6,26 @@ public class Game {
 	private int aantalSpelers=0;
 	private int maxAantalSpelers;
 	private Player spelers[];
+	
 	Game(int maxAantalSpelers){
 		this.maxAantalSpelers = maxAantalSpelers;
 
 		spelers = new Player[maxAantalSpelers];
 		
-		this.printHeader();
+		this.printHeader(true);
+		Utils.waitSeconds(3);
 		this.getSpelerNamen();
-
+		
+		this.printHeader(true, 3);
+		System.out.println("");
+		System.out.println("Het spel kan beginnen. Succes aan alle spelers!");
+		//System.out.println("");
+		printSpelerNamen();
+		System.out.println("");
+		System.out.println("");
 		
 		for (int i=0; i<spelers.length; i++) {
-			Beurt b = new Beurt(spelers[i]);
+			Turn b = new Turn(spelers[i]);
 		}
 		
 		
@@ -38,20 +47,24 @@ public class Game {
 				System.out.println("Welkom in het spel JavahtZee " + spelers[aantalSpelers-1].getNaam() + "!");
 			}
 			this.printIngevoerdeSpelerNamen();
+			if (Yahtzee.blnAutoPlay) Utils.waitSeconds(2);
 		} while (!lastNameUsed.equals("") && aantalSpelers<maxAantalSpelers);
+		System.out.println("");
+		System.out.println("Alle spelers zijn ingevoerd. Het spel kan beginnen.");
+		Utils.waitSeconds(2);
 	}
 	
 	private void printIngevoerdeSpelerNamen(){
 		System.out.println();
 		switch (aantalSpelers) {
+		case 0:
+			//System.out.println("");
+			break;
 		case 1:
 			System.out.println("Onderstaande speler is ingevoerd;");
 			break;
-		case 2:
-			System.out.println("Onderstaande spelers zijn ingevoerd;");
-			break;
 		default:
-			//System.out.println("");
+			System.out.println("Onderstaande spelers zijn ingevoerd;");
 			break;
 		}
 		printSpelerNamen();
@@ -81,6 +94,15 @@ public class Game {
 		default: return "";
 		}
 	}
+	private void printHeader(boolean clearScreen){
+		Utils.clearConsole();
+		this.printHeader();
+	}
+	private void printHeader(boolean clearScreen, int waitSecondsBeforeClearing){
+		Utils.waitSeconds(waitSecondsBeforeClearing);
+		Utils.clearConsole();
+		this.printHeader();
+	}
 	private void printHeader(){
 		System.out.println("*************************************************************************");
 		System.out.println("*************************************************************************");
@@ -95,11 +117,5 @@ public class Game {
 		System.out.println("*************************************************************************");
 		System.out.println("*************************************************************************");
 		System.out.println("*************************************************************************");
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

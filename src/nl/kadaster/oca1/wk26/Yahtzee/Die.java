@@ -1,4 +1,4 @@
-package week26_Yahtzee;
+package nl.kadaster.oca1.wk26.Yahtzee;
 
 public class Die {
 	//ezelsbruggetje: the public must be protected by a default private
@@ -17,6 +17,9 @@ public class Die {
 	public int getTopValue() {
 		return topValueDie;
 	}
+//	public void setTopValue(int topValue) {
+//		topValueDie=topValue;
+//	}
 
 	public void setDieIsFrozen(boolean setValue){
 		dieIsFrozen = setValue;

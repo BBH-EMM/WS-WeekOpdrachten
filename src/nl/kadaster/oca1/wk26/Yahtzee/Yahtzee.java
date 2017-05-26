@@ -1,16 +1,17 @@
-package week26_Yahtzee;
+package nl.kadaster.oca1.wk26.Yahtzee;
 
 public class Yahtzee {
 	static boolean blnAutoPlay = true;
 	
+	static int maxAantalSpelers = 4;
+	static int cntDice = 5;
+	
 	public static void main(String[] args){
-		int maxAantalSpelers = 4;
-		
+	
 		Game spel = new Game(maxAantalSpelers);
 		
-		for (int i=0; i<99; i++){
-			if (!blnAutoPlay) System.out.println();
-		}
+		if (!blnAutoPlay) Utils.clearConsole();
+		
 		System.out.println();
 		System.out.println("Het spel is beïndigd...");
 		spel.printSpelerScores();

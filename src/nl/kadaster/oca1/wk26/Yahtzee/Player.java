@@ -1,8 +1,8 @@
-package week26_Yahtzee;
+package nl.kadaster.oca1.wk26.Yahtzee;
 
 public class Player {
 	private String naam = "";
-	private ScoreKaart sk = new ScoreKaart();
+	private ScoreCard sk = new ScoreCard();
 	
 	Player(String naam){
 		//System.out.println(naam);
@@ -17,7 +17,7 @@ public class Player {
 	public int getScore(){
 		return sk.getScore();
 	}
-	public ScoreKaart scoreKaart(){
+	public ScoreCard scoreKaart(){
 		return sk;
 	}
 }

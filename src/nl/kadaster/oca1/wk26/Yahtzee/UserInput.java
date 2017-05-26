@@ -1,4 +1,4 @@
-package week26_Yahtzee;
+package nl.kadaster.oca1.wk26.Yahtzee;
 
 import java.util.Scanner;
 
@@ -15,5 +15,9 @@ public class UserInput {
 	int getUserInputInt(String message){
 		System.out.println(message);
 		return sc.nextInt();
+	}
+	char getUserInputChar(String message){
+		System.out.println(message);
+		return sc.nextLine().toUpperCase().charAt(0);
 	}
 }
